@@ -13,6 +13,7 @@ function SinglePokemon({ location: { state } }) {
 
   return (
     <div className="single-pokemon-wrapper">
+      <Link to="/">Return to Pokedex</Link>
       <h1>{name.toUpperCase()}</h1>
       <div className="single-pokemon-header">
         <div className="single-pokemon-left">
@@ -48,7 +49,6 @@ function SinglePokemon({ location: { state } }) {
           </div>
         </div>
       </div>
-      <Link to="/">Return to Pokedex</Link>
     </div>
   );
 }

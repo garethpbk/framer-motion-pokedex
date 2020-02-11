@@ -2,11 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import Title from "./Title";
 
-import { useFetchPokemon } from "./hooks";
-
-function AllPokemon() {
-  const pokemon = useFetchPokemon();
-
+function AllPokemon({ pokemon }) {
   if (pokemon === "loading")
     return (
       <div class="pokedex-loading">
