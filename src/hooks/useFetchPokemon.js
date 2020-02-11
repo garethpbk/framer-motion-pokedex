@@ -28,7 +28,11 @@ function useFetchPokemon() {
     pokemon => {
       fetchPokemon()
         .then(res => setPokemon(res))
-        .then(() => setLoading(false));
+        .then(() =>
+          setTimeout(() => {
+            setLoading(false);
+          }, 10000)
+        );
     },
     [pokemon.length]
   );
