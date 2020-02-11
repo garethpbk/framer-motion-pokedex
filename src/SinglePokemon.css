@@ -1,0 +1,48 @@
+.single-pokemon-wrapper {
+  height: 500px;
+  width: 1000px;
+
+  border: 1px solid black;
+  border-radius: 3px;
+}
+
+.single-pokemon-wrapper a {
+  display: block;
+  text-align: center;
+
+  font-size: 32px;
+}
+
+.single-pokemon-wrapper h1 {
+  text-align: center;
+
+  padding: 25px 0;
+  margin: 0;
+
+  background-color: seagreen;
+  color: white;
+
+  font-size: 40px;
+}
+
+.single-pokemon-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr;
+  padding: 25px;
+}
+
+.single-pokemon-header h2 {
+  font-size: 32px;
+}
+
+.single-pokemon-header h3 {
+  font-size: 24px;
+}
+
+.single-pokemon-header li {
+  font-size: 20px;
+}
+
+.single-pokemon-header img {
+  width: 200px;
+}

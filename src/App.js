@@ -5,10 +5,12 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 // import component
 import AllPokemon from "./AllPokemon";
 import SinglePokemon from "./SinglePokemon";
+import Title from "./Title";
 
 function App() {
   return (
     <div className="wrapper">
+      <Title className="title" />
       <Router>
         <Route
           render={({ location }) => (

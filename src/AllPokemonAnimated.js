@@ -1,7 +1,19 @@
 import React from "react";
+import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 import { useFetchPokemon } from "./hooks";
+
+const variants = {
+  visible: i => ({
+    opacity: 1,
+    transition: {
+      duration: 0.5,
+      delay: i * 0.3
+    }
+  }),
+  hidden: { opacity: 0 }
+};
 
 function AllPokemon() {
   const pokemon = useFetchPokemon();
@@ -9,7 +21,14 @@ function AllPokemon() {
   return (
     <div className="pokegrid">
       {pokemon.map((singlePokemon, i) => (
-        <div className="pokecard" key={singlePokemon.name}>
+        <motion.div
+          className="pokecard"
+          key={singlePokemon.name}
+          custom={i}
+          initial="hidden"
+          animate="visible"
+          variants={variants}
+        >
           <Link
             to={{
               pathname: `/pokemon/${singlePokemon.id}`,
@@ -22,7 +41,7 @@ function AllPokemon() {
             />
             <h1>{singlePokemon.name}</h1>
           </Link>
-        </div>
+        </motion.div>
       ))}
     </div>
   );
