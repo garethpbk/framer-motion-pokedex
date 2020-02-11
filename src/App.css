@@ -103,4 +103,5 @@ body {
   left: 150px;
   top: 100px;
   overflow-y: scroll;
+  overflow-x: hidden;
 }

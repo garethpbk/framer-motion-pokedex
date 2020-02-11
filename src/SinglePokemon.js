@@ -9,9 +9,9 @@ const transition = {
 };
 
 const imageVariants = {
-  exit: { y: "50%", opacity: 0, transition },
+  exit: { x: "100%", opacity: 0, transition },
   enter: {
-    y: "0%",
+    x: "0%",
     opacity: 1,
     transition
   }
@@ -82,7 +82,7 @@ function SinglePokemon({ location: { state } }) {
                       animate={{
                         width: ["0%", `${getStatWidth(stat.base_stat)}%`]
                       }}
-                      transition={{ delay: 0.25 * i, duration: 1 }}
+                      transition={{ delay: 1 * i, duration: 1 }}
                     >
                       {stat.base_stat}
                     </motion.div>
