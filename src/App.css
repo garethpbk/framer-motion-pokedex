@@ -28,8 +28,6 @@ body {
 .pokegrid {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
-  grid-column-gap: 50px;
-  grid-row-gap: 50px;
 }
 
 .pokecard {
@@ -38,18 +36,60 @@ body {
   align-items: center;
   justify-content: center;
 
-  height: 200px;
-  width: 200px;
-
   border: 2px solid darkblue;
-  border-radius: 5px;
+
+  padding: 25px;
+
+  text-align: center;
+  text-transform: uppercase;
+
+  background-color: #9bbc0f;
 }
 
-.square {
-  height: 250px;
-  width: 250px;
+.pokecard a {
+  color: darkblue;
+  text-decoration: none;
+}
 
-  background-color: steelblue;
+.pokecard a:hover {
+  text-decoration: underline;
+}
 
-  border: 2px solid darkblue;
+.pokedex-wrapper {
+  background-color: #c00d0d;
+
+  height: 1000px;
+  width: 1000px;
+
+  border-radius: 50px;
+
+  position: relative;
+}
+
+.pokedex-loading {
+  height: 100%;
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background-color: beige;
+
+  border: 20px solid gray;
+}
+
+.pokedex-screen {
+  width: 700px;
+  height: 750px;
+
+  position: absolute;
+
+  background-color: beige;
+
+  border: 20px solid gray;
+
+  left: 150px;
+  top: 100px;
+  overflow-y: scroll;
 }

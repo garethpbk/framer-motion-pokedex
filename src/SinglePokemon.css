@@ -1,16 +1,32 @@
 .single-pokemon-wrapper {
-  height: 500px;
-  width: 1000px;
+  width: 100%;
 
   border: 1px solid black;
   border-radius: 3px;
+
+  background-color: beige;
 }
 
 .single-pokemon-wrapper a {
   display: block;
   text-align: center;
 
+  color: white;
   font-size: 32px;
+
+  margin: 15px auto;
+  padding: 10px 0;
+  text-decoration: none;
+
+  background-color: #c00d0d;
+
+  width: 50%;
+
+  border-radius: 5px;
+}
+
+.single-pokemon-wrapper a:hover {
+  background-color: #900909;
 }
 
 .single-pokemon-wrapper h1 {
@@ -25,24 +41,92 @@
   font-size: 40px;
 }
 
-.single-pokemon-header {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  padding: 25px;
-}
-
-.single-pokemon-header h2 {
+.single-pokemon-wrapper h2 {
   font-size: 32px;
 }
 
-.single-pokemon-header h3 {
+.single-pokemon-wrapper h3 {
   font-size: 24px;
 }
 
-.single-pokemon-header li {
+.single-pokemon-wrapper li {
   font-size: 20px;
 }
 
-.single-pokemon-header img {
+.single-pokemon-wrapper img {
   width: 200px;
+}
+
+.single-pokemon-header {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
+.single-pokemon-left {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 25px;
+}
+
+.single-pokemon-left,
+.single-pokemon-right {
+  padding: 25px;
+
+  border: 2px solid darkblue;
+}
+
+.single-pokemon-types,
+.single-pokemon-stats {
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.single-pokemon-types {
+  display: flex;
+}
+
+.single-pokemon-types li {
+  background-color: forestgreen;
+  padding: 7px;
+  margin: 5px;
+
+  color: white;
+  font-size: 14px;
+  text-transform: uppercase;
+  font-weight: bold;
+
+  border-radius: 5px;
+}
+
+.single-pokemon-stats {
+  list-style-type: none;
+
+  margin: 0;
+  padding: 0;
+}
+
+.stat-background {
+  height: 25px;
+  width: 100%;
+
+  background-color: gray;
+
+  position: relative;
+}
+
+.stat-stat {
+  position: absolute;
+
+  background-color: seagreen;
+
+  color: white;
+  font-size: 15px;
+
+  height: 25px;
+  width: 100%;
+
+  padding: 2px 0 2px 10px;
 }
