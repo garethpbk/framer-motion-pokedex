@@ -1,29 +1,35 @@
 import React, { useState } from "react";
-import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./SinglePokemon.css";
+
+const transition = {
+  duration: 1,
+  ease: [0.43, 0.13, 0.23, 0.96]
+};
+
+const imageVariants = {
+  exit: { x: "100%", opacity: 0, transition },
+  enter: {
+    x: "0%",
+    opacity: 1,
+    transition
+  }
+};
+
+const backVariants = {
+  exit: { x: 100, opacity: 0, transition },
+  enter: { x: 0, opacity: 1, transition: { delay: 1, ...transition } }
+};
 
 function getStatWidth(baseStat) {
   return (baseStat / 150) * 100;
 }
 
-const transition = {
-  duration: 1,
-  ease: [0.25, 0.35, 0.75, 0.95]
-};
+function getRandom() {
+  const random = Math.floor(Math.random() * 360);
 
-const buttonVariants = {
-  exit: { x: 100, opacity: 0 },
-  enter: { x: 0, opacity: 1, transition: { delay: 1, ...transition } }
-};
-
-const routeVariants = {
-  exit: { x: "100%", opacity: 0, transition },
-  enter: { x: "0%", opacity: 1, transition }
-};
-
-function getRandomNumber() {
-  return Math.floor(Math.random() * 360);
+  return random;
 }
 
 function SinglePokemon({ location: { state } }) {
@@ -31,17 +37,17 @@ function SinglePokemon({ location: { state } }) {
     singlePokemon: { id, name, sprites, stats, types }
   } = state;
 
-  const [randomColor, setRandomColor] = useState(getRandomNumber());
+  const [randomColor, setRandomColor] = useState(getRandom());
 
   return (
     <motion.div
       className="single-pokemon-wrapper"
-      variants={routeVariants}
       initial="exit"
       animate="enter"
       exit="exit"
+      variants={imageVariants}
     >
-      <motion.div variants={buttonVariants}>
+      <motion.div variants={backVariants}>
         <Link to="/">Return to Pokedex</Link>
       </motion.div>
       <h1>{name.toUpperCase()}</h1>
@@ -52,7 +58,7 @@ function SinglePokemon({ location: { state } }) {
             src={sprites.front_default}
             alt={name}
             whileTap={{ filter: `hue-rotate(${randomColor}deg)` }}
-            onMouseOver={() => setRandomColor(getRandomNumber())}
+            onMouseOver={() => setRandomColor(getRandom())}
           />
         </div>
         <div className="single-pokemon-right">
@@ -76,10 +82,7 @@ function SinglePokemon({ location: { state } }) {
                       animate={{
                         width: ["0%", `${getStatWidth(stat.base_stat)}%`]
                       }}
-                      transition={{
-                        delay: 1 * i,
-                        duration: 1
-                      }}
+                      transition={{ delay: 1 * i, duration: 1 }}
                     >
                       {stat.base_stat}
                     </motion.div>
