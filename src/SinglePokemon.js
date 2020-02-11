@@ -1,9 +1,35 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
 import "./SinglePokemon.css";
+
+const transition = {
+  duration: 1,
+  ease: [0.43, 0.13, 0.23, 0.96]
+};
+
+const imageVariants = {
+  exit: { y: "50%", opacity: 0, transition },
+  enter: {
+    y: "0%",
+    opacity: 1,
+    transition
+  }
+};
+
+const backVariants = {
+  exit: { x: 100, opacity: 0, transition },
+  enter: { x: 0, opacity: 1, transition: { delay: 1, ...transition } }
+};
 
 function getStatWidth(baseStat) {
   return (baseStat / 150) * 100;
+}
+
+function getRandom() {
+  const random = Math.floor(Math.random() * 360);
+
+  return random;
 }
 
 function SinglePokemon({ location: { state } }) {
@@ -11,18 +37,34 @@ function SinglePokemon({ location: { state } }) {
     singlePokemon: { id, name, sprites, stats, types }
   } = state;
 
+  const [randomColor, setRandomColor] = useState(getRandom());
+
   return (
-    <div className="single-pokemon-wrapper">
+    <motion.div
+      className="single-pokemon-wrapper"
+      initial="exit"
+      animate="enter"
+      exit="exit"
+      variants={imageVariants}
+    >
+      <motion.div variants={backVariants}>
+        <Link to="/">Return to Pokedex</Link>
+      </motion.div>
       <h1>{name.toUpperCase()}</h1>
       <div className="single-pokemon-header">
         <div className="single-pokemon-left">
           <h2>#{id}</h2>
-          <img src={sprites.front_default} alt={name} />
+          <motion.img
+            src={sprites.front_default}
+            alt={name}
+            whileTap={{ filter: `hue-rotate(${randomColor}deg)` }}
+            onMouseOver={() => setRandomColor(getRandom())}
+          />
         </div>
-        <div class="single-pokemon-right">
+        <div className="single-pokemon-right">
           <div>
             <h3>Types:</h3>
-            <ul class="single-pokemon-types">
+            <ul className="single-pokemon-types">
               {types.map(type => (
                 <li key={type.type.name}>{type.type.name}</li>
               ))}
@@ -30,17 +72,20 @@ function SinglePokemon({ location: { state } }) {
           </div>
           <div>
             <h3>Stats:</h3>
-            <ul class="single-pokemon-stats">
-              {stats.map(stat => (
+            <ul className="single-pokemon-stats">
+              {stats.map((stat, i) => (
                 <li key={stat.stat.name}>
                   <p>{stat.stat.name}</p>
                   <div className="stat-background">
-                    <div
+                    <motion.div
                       className="stat-stat"
-                      style={{ width: `${getStatWidth(stat.base_stat)}%` }}
+                      animate={{
+                        width: ["0%", `${getStatWidth(stat.base_stat)}%`]
+                      }}
+                      transition={{ delay: 0.25 * i, duration: 1 }}
                     >
                       {stat.base_stat}
-                    </div>
+                    </motion.div>
                   </div>
                 </li>
               ))}
@@ -48,8 +93,7 @@ function SinglePokemon({ location: { state } }) {
           </div>
         </div>
       </div>
-      <Link to="/">Return to Pokedex</Link>
-    </div>
+    </motion.div>
   );
 }
 

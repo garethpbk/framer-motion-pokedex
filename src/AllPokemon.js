@@ -9,7 +9,7 @@ function AllPokemon() {
 
   if (pokemon === "loading")
     return (
-      <div class="pokedex-loading">
+      <div className="pokedex-loading">
         <Title />
       </div>
     );

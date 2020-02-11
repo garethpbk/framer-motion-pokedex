@@ -1,8 +1,7 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-
-import { useFetchPokemon } from "./hooks";
+import Title from "./Title";
 
 const variants = {
   visible: i => ({
@@ -12,11 +11,29 @@ const variants = {
       delay: i * 0.3
     }
   }),
-  hidden: { opacity: 0 }
+  hidden: { opacity: 0 },
+  hover: { scale: 1.1 },
+  exit: {
+    scale: 0.5,
+    opacity: 0,
+    transition: { duration: 0.5 }
+  }
 };
 
-function AllPokemon() {
-  const pokemon = useFetchPokemon();
+const imageVariants = {
+  hover: {
+    scale: 1.5,
+    rotate: [0, 180, 360, 240, 0]
+  }
+};
+
+function AllPokemon({ pokemon }) {
+  if (pokemon === "loading")
+    return (
+      <div className="pokedex-loading">
+        <Title />
+      </div>
+    );
 
   return (
     <div className="pokegrid">
@@ -28,6 +45,7 @@ function AllPokemon() {
           initial="hidden"
           animate="visible"
           variants={variants}
+          whileHover="hover"
         >
           <Link
             to={{
@@ -35,9 +53,10 @@ function AllPokemon() {
               state: { singlePokemon }
             }}
           >
-            <img
+            <motion.img
               src={singlePokemon.sprites.front_default}
               alt={singlePokemon.name}
+              variants={imageVariants}
             />
             <h1>{singlePokemon.name}</h1>
           </Link>
