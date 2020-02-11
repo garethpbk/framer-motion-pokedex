@@ -20,10 +20,10 @@ function SinglePokemon({ location: { state } }) {
           <h2>#{id}</h2>
           <img src={sprites.front_default} alt={name} />
         </div>
-        <div class="single-pokemon-right">
+        <div className="single-pokemon-right">
           <div>
             <h3>Types:</h3>
-            <ul class="single-pokemon-types">
+            <ul className="single-pokemon-types">
               {types.map(type => (
                 <li key={type.type.name}>{type.type.name}</li>
               ))}
@@ -31,7 +31,7 @@ function SinglePokemon({ location: { state } }) {
           </div>
           <div>
             <h3>Stats:</h3>
-            <ul class="single-pokemon-stats">
+            <ul className="single-pokemon-stats">
               {stats.map(stat => (
                 <li key={stat.stat.name}>
                   <p>{stat.stat.name}</p>

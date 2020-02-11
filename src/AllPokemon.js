@@ -5,7 +5,7 @@ import Title from "./Title";
 function AllPokemon({ pokemon }) {
   if (pokemon === "loading")
     return (
-      <div class="pokedex-loading">
+      <div className="pokedex-loading">
         <Title />
       </div>
     );
