@@ -20,10 +20,22 @@ async function fetchPokemon() {
 
 function useFetchPokemon() {
   const [pokemon, setPokemon] = useState([]);
+  const [loading, setLoading] = useState(true);
 
-  useEffect(() => {
-    fetchPokemon().then(res => setPokemon(res));
-  }, [pokemon.length]);
+  useEffect(
+    pokemon => {
+      fetchPokemon()
+        .then(res => setPokemon(res))
+        .then(() =>
+          setTimeout(() => {
+            setLoading(false);
+          }, 5000)
+        );
+    },
+    [pokemon.length]
+  );
+
+  if (loading) return "loading";
 
   return pokemon;
 }
