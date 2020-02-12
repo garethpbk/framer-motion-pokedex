@@ -59,6 +59,8 @@ function SinglePokemon({ location: { state } }) {
             alt={name}
             whileTap={{ filter: `hue-rotate(${randomColor}deg)` }}
             onMouseOver={() => setRandomColor(getRandom())}
+            drag
+            dragConstraints={{ top: 100, right:  100, bottom: 100, left: 100 }}
           />
         </div>
         <div className="single-pokemon-right">
