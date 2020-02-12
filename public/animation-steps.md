@@ -5,7 +5,7 @@
 2. AllPokemon
 
 - `import { motion } from 'framer-motion'`
-- set initial, animate, and transition properties on `.pokedex-loading` div (wraps <Title> component) - make it a `motion.div` first
+- set initial, animate, and transition properties on `.pokedex-loading` div (wraps Title component) - make it a `motion.div` first
 - add `variants` object (without delay) to use for pokecards, explain what variants are
 - add function to visible property of variants, show how to use `i` to stagger animations with `delay` and the `custom` prop
 - add `hover` to variants and `whileHover` to pokecards
@@ -23,7 +23,7 @@
 - add `i` as second argument of map, add `transition` property with delay and duration
 - set up `transition` const to use in variants
 - add `buttonVariants` object with enter and exit properties for button animation (explain object property shorthand)
-- try to add `motion` to <Link> component, show crash
+- try to add `motion` to Link component, show crash
 - add wrapping motion div with buttonVariants
 - add whileTap to sprite img with static hue-rotate deg value
 - add random number function and use in whileTap on img, explain how it only renders once

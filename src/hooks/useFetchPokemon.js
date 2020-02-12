@@ -29,7 +29,7 @@ function useFetchPokemon() {
         .then(() =>
           setTimeout(() => {
             setLoading(false);
-          }, 5000)
+          }, 10000)
         );
     },
     [pokemon.length]

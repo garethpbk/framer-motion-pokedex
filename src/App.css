@@ -23,6 +23,17 @@ body {
   width: 250px;
 
   margin: 50px 0;
+
+  stroke: #000;
+  stroke-width: 0.5;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.boot-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .pokegrid {
