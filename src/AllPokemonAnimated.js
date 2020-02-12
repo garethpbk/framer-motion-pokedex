@@ -12,12 +12,7 @@ const variants = {
     }
   }),
   hidden: { opacity: 0 },
-  hover: { scale: 1.1 },
-  exit: {
-    scale: 0.5,
-    opacity: 0,
-    transition: { duration: 0.5 }
-  }
+  hover: { scale: 1.1 }
 };
 
 const imageVariants = {
